@@ -1,4 +1,6 @@
-import { useState } from "react";
+'use client'
+
+import { useState } from 'react';
 import { ToastContainer, toast} from 'react-toastify';
 
 export default function Login() {
@@ -12,7 +14,12 @@ return (
 
     <div>
       <h1>Alterar</h1>
-      <form onSubmit={handlerLogin}>
+      <form onSubmit>
+      <input
+          placeholder='Name'
+          type="text"
+          onChange={(e) => { setUser({ ...user, name: e.target.value }) }}>
+        </input>
         <input
           placeholder='E-mail'
           type="email"

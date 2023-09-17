@@ -1,5 +1,8 @@
-import { useState } from "react";
+'use client'
+
+import { useState } from 'react';
 import { ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
     const [user, setUser] = useState({
@@ -7,26 +10,20 @@ export default function Login() {
       password: '',
     });
 
-    const handlerLogin = async (e) => { e.preventDefault();
-        try {
-          const userAuth = handlerAcessUser(user);
-          if(userAuth.token === undefined){
-            toast.error('o form está com dados incorretos');
-          } 
-          push('/pages/dashboard')
-    
-        } catch {
-          toast.error('o form está incorreto')
-          refresh();
-        }
+        const showAlertRegister = (e) => { e.preventDefault();
+        toast.success('Seus dados foram cadastrados com sucesso!')  
       }
-
 
 return (
 
     <div>
-      <h1>Alterar</h1>
-      <form onSubmit={handlerLogin}>
+      <h1>Cadastrar</h1>
+      <form onSubmit={showAlertRegister}>
+      <input
+          placeholder='Name'
+          type="text"
+          onChange={(e) => { setUser({ ...user, name: e.target.value }) }}>
+        </input>
         <input
           placeholder='E-mail'
           type="email"
