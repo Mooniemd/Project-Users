@@ -11,33 +11,12 @@ export default function Login() {
       password: '',
     });
 
-    /*
-      const clear = document.getElementById('btn')
-      clear?.addEventListener('click', function handlerClick(e){
-        e.preventDefault();
-
-        const name = document.getElementById('name');
-        const email = document.getElementById('email');
-        const password = document.getElementById('password');
-
-        name.value = '';
-        email.value = '';
-        password  .value = '';
-      })
-      */
-
-    
-  const handlerLogin = async (e) => { e.preventDefault();
-      const userAuth = await handlerAcessUser(user);
-      if(userAuth.token === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'){
-        toast.success('Seu usuário foi alterado com sucesso!');
-      } else{
-      toast.error('Não foi possível alterar seus dados...')
-      refresh();
+    const form = document.getElementById('formAlter')
+      const showAlertAlter = (e) => { e.preventDefault();
+        toast.success('Seus dados foram cadastrados com sucesso!')
+        form.reset()
       }
-
-  }
-
+0
 return (
 <div>
       <nav class="navbar">
@@ -47,7 +26,7 @@ return (
       </nav> 
     <div className="container">
       <h1>Altere seu usuário</h1>
-      <form onSubmit={handlerLogin}>
+      <form onSubmit={showAlertAlter} id="formAlter">
         <label for="name">Nome</label>
       <input placeholder='Name' type="text" name="name" required
           onChange={(e) => { setUser({ ...user, name: e.target.value }) }}>

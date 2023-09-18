@@ -10,24 +10,11 @@ export default function Login() {
       email: '',
       password: '',
     });
-
-/*
-      const clear = document.getElementById('btn')
-      clear?.addEventListener('click', function handlerClick(e){
-        e.preventDefault();
-
-        const name = document.getElementById('name');
-        const email = document.getElementById('email');
-        const password = document.getElementById('password');
-
-        name.value = '';
-        email.value = '';
-        password  .value = '';
-      })
-      */
-
+    
+    const form = document.getElementById('formRegister')
       const showAlertRegister = (e) => { e.preventDefault();
         toast.success('Seus dados foram cadastrados com sucesso!')
+        form.reset()
       }
 
 return (
@@ -39,7 +26,7 @@ return (
       </nav> 
     <div className="container">
       <h1>Cadastre seu usuário</h1>
-      <form onSubmit={showAlertRegister}>
+      <form onSubmit={showAlertRegister} id="formRegister">
         <label for="name">Nome</label>
       <input placeholder='Name' type="text" name="name" required id="name"
           onChange={(e) => { setUser({ ...user, name: e.target.value }) }}>
