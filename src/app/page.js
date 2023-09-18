@@ -28,21 +28,26 @@ export default function Login() {
   }
   return (
     <div>
+    <nav class="navbar">
+      <a href="/">Login</a>  
+      <a href="/pages/alter">Alterar</a>    
+      <a href="/pages/register">Registrar</a>      
+      </nav>  
+    <div className="container">
       <h1>Login</h1>
       <form onSubmit={handlerLogin}>
-        <input
-          placeholder='E-mail'
-          type="email"
+      <label for="email">Email</label>
+        <input placeholder='E-mail' type="email" name="email" required
           onChange={(e) => { setUser({ ...user, email: e.target.value }) }}>
         </input>
-        <input
-          placeholder='Senha'
-          type='password'
+        <label for="password">Senha</label>
+        <input placeholder='Senha' type='password' name="password" required
           onChange={(e) => { setUser({ ...user, password: e.target.value }) }}>
         </input>
         <button>Entrar</button>
       </form>
       <ToastContainer/>
+    </div>
     </div>
   )
 }
