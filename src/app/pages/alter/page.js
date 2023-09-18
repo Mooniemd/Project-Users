@@ -13,7 +13,7 @@ export default function Login() {
 
     const form = document.getElementById('formAlter')
       const showAlertAlter = (e) => { e.preventDefault();
-        toast.success('Seus dados foram cadastrados com sucesso!')
+        toast.success('Seus dados foram alterados com sucesso!')
         form.reset()
       }
 0

@@ -122,3 +122,8 @@ button:hover{
   background-color: rgb(230, 229, 229);
   transition: 250ms;
 }
+
+.userList{
+  margin: 10px;
+  margin-top: 100px;
+}

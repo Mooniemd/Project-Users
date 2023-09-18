@@ -17,7 +17,7 @@ export default function Login() {
     try {
       const userAuth = await handlerAcessUser(user);
       if(userAuth.token === undefined){
-        toast.error('o form está com dados incorretos');
+        toast.error('Seu login está incorreto!');
       }
       push('/pages/dashboard')
 
@@ -37,14 +37,14 @@ export default function Login() {
       <h1>Login</h1>
       <form onSubmit={handlerLogin}>
       <label for="email">Email</label>
-        <input placeholder='E-mail' type="email" name="email" required
+        <input placeholder='E-mail' type="email" name="email" required id="email"
           onChange={(e) => { setUser({ ...user, email: e.target.value }) }}>
         </input>
         <label for="password">Senha</label>
-        <input placeholder='Senha' type='password' name="password" required
+        <input placeholder='Senha' type='password' name="password" required id="password"
           onChange={(e) => { setUser({ ...user, password: e.target.value }) }}>
         </input>
-        <button>Entrar</button>
+        <button id="btn">Entrar</button>
       </form>
       <ToastContainer/>
     </div>
