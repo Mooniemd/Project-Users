@@ -11,7 +11,7 @@ export default async function Dashboard() {
       }
     return(
         <div>
-        <nav class="navbar">
+        <nav className="navbar">
         <a href="/">Login</a>  
         <a href="/pages/alter">Alterar</a>    
         <a href="/pages/register">Registrar</a>      

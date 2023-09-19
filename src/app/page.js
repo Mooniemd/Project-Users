@@ -26,10 +26,10 @@ export default function Login() {
       refresh();
     }
   }
-  
+
   return (
     <div>
-    <nav class="navbar">
+    <nav className="navbar">
       <a href="/">Login</a>  
       <a href="/pages/alter">Alterar</a>    
       <a href="/pages/register">Registrar</a>      
@@ -37,11 +37,11 @@ export default function Login() {
     <div className="container">
       <h1>Login</h1>
       <form onSubmit={handlerLogin}>
-      <label for="email">Email</label>
+      <label htmlFor="email">Email</label>
         <input placeholder='E-mail' type="email" name="email" required id="email"
           onChange={(e) => { setUser({ ...user, email: e.target.value }) }}>
         </input>
-        <label for="password">Senha</label>
+        <label htmlFor="password">Senha</label>
         <input placeholder='Senha' type='password' name="password" required id="password"
           onChange={(e) => { setUser({ ...user, password: e.target.value }) }}>
         </input>
