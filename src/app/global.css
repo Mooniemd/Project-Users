@@ -124,6 +124,28 @@ button:hover{
 }
 
 .userList{
+  font-size: 14px;
   margin: 10px;
   margin-top: 100px;
+  width: 100%;
+  max-width: 460px; 
+  display: block;
+  margin: auto;
+  flex-direction: column;
+  padding: 2rem 2rem 1.5rem;  
+  margin-top: 100px;
+  box-shadow: 10px 18px 25px 0px rgba(0,0,0,0.1);
+  @media (min-width: 500px) {
+    flex-direction: row;
+    align-items: center;
+}
+}
+
+.listText{
+  column-count: 2;
+  text-align: justify;
+}
+
+span{
+  font-weight: lighter;
 }

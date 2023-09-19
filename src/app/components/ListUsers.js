@@ -4,9 +4,9 @@ export default async function ListUsers({users}){
         <div>
 
             {users?.map((user,index) =>
-            <div>
-                <h2 key={index} className="text-center mt-8">
-                    {user.name} - {user.email}
+            <div class="listText">
+                <h2 key={index}>
+                    {user.name} <span>{user.email}</span>
                 </h2>
                 </div>
             )}

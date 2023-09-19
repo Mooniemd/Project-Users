@@ -1,8 +1,8 @@
 import './global.css'
 
 export const metadata = {
-  title: 'Register users',
-  description: 'Project for class PTAC',
+  title: 'User Register',
+  description: 'Project for PTAC Class',
 }
 
 export default function RootLayout({ children }) {

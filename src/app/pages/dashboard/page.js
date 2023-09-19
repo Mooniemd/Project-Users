@@ -4,6 +4,11 @@ import ListUsers from "@/app/components/ListUsers";
 
 export default async function Dashboard() {
     const users = await getUsers()
+
+    function deleteToken(){
+        Cookies.set('token', '')
+        toast.success('Você foi deslogado com sucesso!')
+      }
     return(
         <div>
         <nav class="navbar">
