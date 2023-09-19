@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react';
+import Cookies from "js-cookie";
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,7 +17,12 @@ export default function Login() {
         toast.success('Seus dados foram alterados com sucesso!')
         form.reset()
       }
-0
+
+      function deleteToken(){
+        Cookies.set('token', '')
+        toast.success('Você foi deslogado com sucesso!')
+      }
+
 return (
 <div>
       <nav class="navbar">
@@ -39,7 +45,8 @@ return (
         <input placeholder='Senha' type='password' name="password" required
           onChange={(e) => { setUser({ ...user, password: e.target.value }) }}>
         </input>
-        <button>Entrar</button> 
+        <button>Alterar</button> 
+        <button type="button" onClick={()=> deleteToken()}>Deslogar</button>
       </form>
       <ToastContainer/> 
     </div>

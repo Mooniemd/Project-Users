@@ -26,6 +26,7 @@ export default function Login() {
       refresh();
     }
   }
+  
   return (
     <div>
     <nav class="navbar">
