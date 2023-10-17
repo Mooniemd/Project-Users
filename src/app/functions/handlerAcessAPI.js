@@ -1,6 +1,25 @@
 'use server'
 
-const users = [{
+const url = "https://ptac-aula017.vercel.app"
+const getUserAuthenticated = async(user) =>{
+    const respondeOfApi = await fetch(url + "/user/authenticated",
+        {
+            method: "POST",
+            headers: { "Content-Type": "Application/Json"  },
+            body: JSON.stringify(user)
+        }
+    );
+        const userAuth = await respondeOfApi.json();
+        return userAuth;
+}
+
+const getUsers = async () =>{
+
+}
+
+export { getUsers, getUserAuthenticated };
+
+/* const users = [{
     name: 'Moonie',
     email: 'moonieoliveira@gmail.com',
     password: 'senha',
@@ -53,3 +72,4 @@ const getUsers = () =>{
         
 }
 export { getUsers, getUserAuthenticated };
+*/
