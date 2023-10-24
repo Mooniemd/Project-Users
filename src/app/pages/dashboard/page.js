@@ -3,12 +3,11 @@ import { Suspense } from "react";
 import ListUsers from "@/app/components/ListUsers";
 
 export default async function Dashboard() {
-    const users = await getUsers()
+    const listUsers = await fetch("https://ptac-aula017.vercel.app/users",{
+        cache: "no-cache"
+    });
+    const users = await listUsers.json();
 
-    function deleteToken(){
-        Cookies.set('token', '')
-        toast.success('Você foi deslogado com sucesso!')
-      }
     return(
         <div>
         <nav className="navbar">
