@@ -3,10 +3,7 @@ import { Suspense } from "react";
 import ListUsers from "@/app/components/ListUsers";
 
 export default async function Dashboard() {
-    const listUsers = await fetch("https://ptac-aula017.vercel.app/users",{
-        cache: "no-cache"
-    });
-    const users = await listUsers.json();
+    const users = await getUsers();
 
     return(
         <div>

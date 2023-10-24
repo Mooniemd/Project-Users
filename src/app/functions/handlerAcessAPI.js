@@ -14,6 +14,15 @@ const getUserAuthenticated = async(user) =>{
 }
 
 const getUsers = async () =>{
+    try{
+        const respondeOfApi = await fetch( url + "/users",{
+            next: { revalidate: 10}
+        });
+        const listUsers = respondeOfApi.json()
+        return listUsers;
+    } catch{
+        return null
+    }
 
 }
 
