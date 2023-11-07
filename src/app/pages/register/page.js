@@ -1,9 +1,11 @@
 'use client'
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation'
 import Cookies from "js-cookie";
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { newUser } from '@/app/functions/handlerAcessAPI';
 
 export default function Login() {
     const [user, setUser] = useState({
@@ -12,11 +14,18 @@ export default function Login() {
       password: '',
     });
 
-    const form = document.getElementById('formRegister')
-      const showAlertRegister = (e) => { e.preventDefault();
-        toast.success('Seus dados foram cadastrados com sucesso!')
-        form.reset()
-      }
+const { push } = useRouter();
+
+const handleFormSubmit = async (event) => {
+  event.preventDefault();
+  try{
+    console.log(user)
+    await newUser(user);
+    return push("/pages/dashboard");
+  } catch{
+    return toast.error("Usuário inválido!")
+  }
+};
 
       function deleteToken(){
         Cookies.set('token', '')
@@ -32,7 +41,7 @@ return (
       </nav> 
     <div className="container">
       <h1>Cadastre seu usuário</h1>
-      <form onSubmit={showAlertRegister} id="formRegister">
+      <form onSubmit={handleFormSubmit} id="formRegister">
         <label htmlFor="name">Nome</label>
       <input placeholder='Name' type="text" name="name" required id="name"
           onChange={(e) => { setUser({ ...user, name: e.target.value }) }}>
