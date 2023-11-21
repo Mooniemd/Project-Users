@@ -1,23 +1,38 @@
 'use client'
 
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import { useRouter } from 'next/navigation'
 import Cookies from "js-cookie";
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getUser } from '@/app/functions/handlerAcessAPI';
 
-export default function Login() {
+export default function Alter() {
     const [user, setUser] = useState({
       name: '',
       email: '',
       password: '',
     });
 
-    const form = document.getElementById('formAlter')
-      const showAlertAlter = (e) => { e.preventDefault();
-        toast.success('Seus dados foram alterados com sucesso!')
-        form.reset()
-      }
+    const { push } = useRouter();
 
+    useEffect(() => {
+    const findUser = async () => {
+      const userFind = await getUser(params.id);
+      setUser({ ...user, name: userFind.name, email: userFind.email})
+    }
+    findUser();
+  }, [])
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    await updateUser(user, params.id);
+    await new Promise((resolve) => {
+      toast.sucess("Usuário alterado com sucesso!");
+      setTimeout(resolve, 5000);
+    });
+    return push("/pages/dashboard")
+  }
       function deleteToken(){
         Cookies.set('token', '')
         toast.success('Você foi deslogado com sucesso!')
@@ -32,7 +47,7 @@ return (
       </nav> 
     <div className="container">
       <h1>Altere seu usuário</h1>
-      <form onSubmit={showAlertAlter} id="formAlter">
+      <form  id="formAlter">
         <label htmlFor="name">Nome</label>
       <input placeholder='Name' type="text" name="name" required
           onChange={(e) => { setUser({ ...user, name: e.target.value }) }}>

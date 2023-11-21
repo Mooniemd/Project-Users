@@ -29,6 +29,24 @@ const newUser = async (user) =>{
     }
 }
 
+const updateUser = async ( user, id) => {
+    const token = cookkies().get('token')?.value;
+    try{
+        const respondeOfApi = await fetch (`${url}/user/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'Application/json',
+                Cookie: `token=${token}`
+            },
+            body: JSON.stringify(user)
+        });
+        const userSave = await respondeOfApi.json();
+        return userSave;
+    } catch{
+        return null;
+    }
+}
+
 const getUsers = async () =>{
     try{
         const respondeOfApi = await fetch( url + "/users",{
@@ -40,10 +58,23 @@ const getUsers = async () =>{
     } catch{
         return null
     }
-
+    
 }
 
-export { getUsers, getUserAuthenticated, newUser };
+const getUser = async (id) =>{
+    try{
+        const respondeOfApi = await fetch( url + "/users" + id,{
+            next: { revalidate: 10},
+            cache: "no-cache"
+        });
+        const listUsers = respondeOfApi.json()
+        return listUsers;
+    } catch{
+        return null
+    }
+}
+
+export { getUser, getUsers, getUserAuthenticated, newUser, updateUser };
 
 /* const users = [{
     name: 'Moonie',
